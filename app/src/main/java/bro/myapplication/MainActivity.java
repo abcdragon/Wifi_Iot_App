@@ -11,35 +11,26 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.accessibility.AccessibilityManagerCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
-import java.net.URLStreamHandler;
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,10 +106,10 @@ public class MainActivity extends AppCompatActivity {
         // cardview에 들어갈 item 설정
         List<Item> items = new ArrayList<>();
         Item[] item = new Item[ITEM_SIZE];
-        item[0] = new Item(R.drawable.aaaa, "보안모드", value_1);
-        item[1] = new Item(R.drawable.bbbbbb, "수분", value_2);
-        item[2] = new Item(R.drawable.aaaa, "온도", value_3);
-        item[3] = new Item(R.drawable.bbbbbb, "문 열기", value_4);
+        item[0] = new Item(R.drawable.ccccc, "보안모드", value_1);
+        item[1] = new Item(R.drawable.aaaaa, "수분", value_2);
+        item[2] = new Item(R.drawable.bbbbb, "온도", value_3);
+        item[3] = new Item(R.drawable.ddddd, "문 열기", value_4);
 
         for (int i = 0; i < ITEM_SIZE; i++) {
             items.add(item[i]);
@@ -193,10 +184,10 @@ public class MainActivity extends AppCompatActivity {
 
             List<Item> items = new ArrayList<>();
             Item[] item = new Item[ITEM_SIZE];
-            item[0] = new Item(R.drawable.aaaa, "보안모드", value_1);
-            item[1] = new Item(R.drawable.bbbbbb,"수분", value_2);
-            item[2] = new Item(R.drawable.aaaa,"온도", value_3);
-            item[3] = new Item(R.drawable.bbbbbb,"#4", value_4);
+            item[0] = new Item(R.drawable.ddddd, "보안모드", value_1);
+            item[1] = new Item(R.drawable.aaaaa, "수분", value_2);
+            item[2] = new Item(R.drawable.bbbbb, "온도", value_3);
+            item[3] = new Item(R.drawable.ccccc, "#4", value_4);
 
             for (int i = 0; i < ITEM_SIZE; i++) {
                 items.add(item[i]);
@@ -229,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
             alert.setMessage("파싱할 주소를 입력해주세요");
 
             final EditText input =  new EditText(this);
+            input.setText(URLs);
             alert.setView(input);
 
             alert.setPositiveButton("Ok", new DialogInterface.OnClickListener(){

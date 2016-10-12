@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -32,13 +33,23 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         final Item item = items.get(position);
+        Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
+        final Drawable changeDrawable_1 = ContextCompat.getDrawable(context, R.drawable.ccccc);
+        final Drawable changeDrawable_2 = ContextCompat.getDrawable(context, R.drawable.ddddd);
+        holder.image.setBackground(drawable);
         holder.title.setText(item.getTitle());
         holder.value.setText(item.getValue());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+            if(item.getTitle().equals("보안모드")){
+                if(item.getImage() == R.drawable.ccccc) holder.image.setBackground(changeDrawable_2);
+
+                else holder.image.setBackground(changeDrawable_1);
+            }
+
             count++;
 
             if(count % 2 == 0){
@@ -56,11 +67,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView image;
         TextView title, value;
         CardView cardview;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            image = (ImageView) itemView.findViewById(R.id.image);
             title = (TextView) itemView.findViewById(R.id.title);
             value = (TextView) itemView.findViewById(R.id.value);
             cardview = (CardView) itemView.findViewById(R.id.cardview);
