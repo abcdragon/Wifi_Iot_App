@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         List<Item> items = new ArrayList<>();
         Item[] item = new Item[ITEM_SIZE];
         item[0] = new Item(R.drawable.rock_close, "보안모드", value_1);
-        item[1] = new Item(R.drawable.window, "창문 열림 닫힘", value_2);
+        item[1] = new Item(R.drawable.window, "창문 상태", value_2);
         item[2] = new Item(R.drawable.temp, "온도", value_3);
         item[3] = new Item(R.drawable.rock_open, "문 열기", value_4);
 
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
             List<Item> items = new ArrayList<>();
             Item[] item = new Item[ITEM_SIZE];
             item[0] = new Item(R.drawable.rock_close, "보안모드", value_1);
-            item[1] = new Item(R.drawable.window, "창문 열림 닫힘", value_2);
+            item[1] = new Item(R.drawable.window, "창문 상태", value_2);
             item[2] = new Item(R.drawable.temp, "온도", value_3);
             item[3] = new Item(R.drawable.rock_open, "문 열기", value_4);
 
@@ -233,6 +233,8 @@ public class MainActivity extends AppCompatActivity {
                         fos.write(input.getText().toString().getBytes());
                         fos.close();
                         URLs = input.getText().toString();
+                        MainActivity.MyAsyncTask myAsyncTask = new MainActivity.MyAsyncTask();
+                        myAsyncTask.execute();
                     }
                     catch (Exception e) {
                         e.printStackTrace();
