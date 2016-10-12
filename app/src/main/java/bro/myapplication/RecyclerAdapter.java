@@ -36,8 +36,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final Item item = items.get(position);
         Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
-        final Drawable changeDrawable_1 = ContextCompat.getDrawable(context, R.drawable.ccccc);
-        final Drawable changeDrawable_2 = ContextCompat.getDrawable(context, R.drawable.ddddd);
+        final Drawable changeDrawable_1 = ContextCompat.getDrawable(context, R.drawable.rock_close);
+        final Drawable changeDrawable_2 = ContextCompat.getDrawable(context, R.drawable.rock_open);
         holder.image.setBackground(drawable);
         holder.title.setText(item.getTitle());
         holder.value.setText(item.getValue());
@@ -45,7 +45,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             @Override
             public void onClick(View view) {
             if(item.getTitle().equals("보안모드")){
-                if(item.getImage() == R.drawable.ccccc) holder.image.setBackground(changeDrawable_2);
+                if(item.getImage() == R.drawable.rock_close) holder.image.setBackground(changeDrawable_2);
 
                 else holder.image.setBackground(changeDrawable_1);
             }
