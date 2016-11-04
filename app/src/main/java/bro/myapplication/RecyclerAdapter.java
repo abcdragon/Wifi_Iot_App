@@ -45,9 +45,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             @Override
             public void onClick(View view) {
             if(item.getTitle().equals("보안모드")){
-                if(item.getImage() == R.drawable.rock_close) holder.image.setBackground(changeDrawable_2);
+                if(item.getImage() == R.drawable.rock_close) {
+                    holder.image.setBackground(changeDrawable_1);
+                    holder.value.setText("실행 중.....");
+                }
 
-                else holder.image.setBackground(changeDrawable_1);
+                else {
+                    holder.image.setBackground(changeDrawable_2);
+                    holder.value.setText("실행하기");
+                }
             }
 
             count++;

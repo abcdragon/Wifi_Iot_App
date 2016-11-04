@@ -106,10 +106,10 @@ public class MainActivity extends AppCompatActivity {
         // cardview에 들어갈 item 설정
         List<Item> items = new ArrayList<>();
         Item[] item = new Item[ITEM_SIZE];
-        item[0] = new Item(R.drawable.rock_close, "보안모드", value_1);
+        item[0] = new Item(R.drawable.rock_open, "보안모드", value_1);
         item[1] = new Item(R.drawable.window, "창문 상태", value_2);
-        item[2] = new Item(R.drawable.temp, "온도", value_3);
-        item[3] = new Item(R.drawable.rock_open, "문 열기", value_4);
+        item[2] = new Item(R.drawable.temp, "온/습도", value_3);
+        item[3] = new Item(R.drawable.door, "문 열기", value_4);
 
         for (int i = 0; i < ITEM_SIZE; i++) {
             items.add(item[i]);
@@ -139,14 +139,12 @@ public class MainActivity extends AppCompatActivity {
         Document doc;
         try{
             doc = Jsoup.connect(URLs).get();
-            Elements ele1 = doc.select("title").eq(0);
-            Elements ele2 = doc.select("a").eq(0);
-            Elements ele3 = doc.select("p").eq(0);
-            Elements ele4 = doc.select("div").eq(0);
+            Elements ele1 = doc.select("p").eq(0);
+            Elements ele2 = doc.select("p").eq(1);
+            Elements ele3 = doc.select("p").eq(2);
             value_1 = ele1.text();
-            value_2 = ele2.text();
-            value_3 = ele3.text();
-            value_4 = ele4.text();
+            value_2 = ele3.text();
+            value_3 = ele1.text()+"/"+ele2.text();
         }
 
         catch(Exception e){
@@ -187,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
             item[0] = new Item(R.drawable.rock_close, "보안모드", value_1);
             item[1] = new Item(R.drawable.window, "창문 상태", value_2);
             item[2] = new Item(R.drawable.temp, "온도", value_3);
-            item[3] = new Item(R.drawable.rock_open, "문 열기", value_4);
+            item[3] = new Item(R.drawable.door, "문 열기", value_4);
 
             for (int i = 0; i < ITEM_SIZE; i++) {
                 items.add(item[i]);
