@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script   src="https://code.jquery.com/jquery-3.1.1.js"   
+        integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   
+        crossorigin="anonymous"></script>
+        <meta charset="UTF-8">
+        <title>IoT Welcome</title>
+        <style>
+            div {
+                border:3px solid lightslategray;
+                text-align:center;
+                background-color: lawngreen;
+            }
+            h1.explain{
+                color: yellow;
+                outline-color:green;
+                outline-style:double;
+                background-color:black; 
+            }
+            h3.info{
+                text-decoration:overline;
+            }
+        </style>
+        <script>
+            $(document).ready(function(){
+                    $.get("ajax_switch",function(data,status){
+                    $("#ondo").text(data.ondo);
+                    $("#seupdo").text(data.seupdo);
+                    $("#window").text(data.window);
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div >
+            <h1 class="explain">현재 온도</h1>
+            <h3 class="info" id="ondo">20</h3>
+        </div>
+        <div >
+            <h1 class="explain">현재 습도</h1>
+            <h3 class="info" id="seupdo">30</h3>
+        </div>
+        <div >
+            <h1 class="explain">현재 창문</h1>
+            <h3 class="info" id="window">열림</h3>
+        </div>
+
+    </body>
+</html>
