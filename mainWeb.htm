@@ -7,15 +7,15 @@
         <meta charset="UTF-8">
         <title>IoT Welcome</title>
         <style>
-            div {
+            div.content {
                 border:3px solid lightslategray;
                 text-align:center;
                 background-color: lawngreen;
+                display:inline-block;
+                margin:20px
             }
             h1.explain{
                 color: yellow;
-                outline-color:green;
-                outline-style:double;
                 background-color:black; 
             }
             h3.info{
@@ -33,17 +33,19 @@
         </script>
     </head>
     <body>
-        <div >
-            <h1 class="explain">현재 온도</h1>
-            <h3 class="info" id="ondo">20</h3>
-        </div>
-        <div >
-            <h1 class="explain">현재 습도</h1>
-            <h3 class="info" id="seupdo">30</h3>
-        </div>
-        <div >
-            <h1 class="explain">현재 창문</h1>
-            <h3 class="info" id="window">열림</h3>
+        <div style="margin:0 auto">
+            <div class="content">
+                <h1 class="explain">현재 온도</h1>
+                <h3 class="info" id="ondo">20</h3>
+            </div>
+            <div class="content">
+                <h1 class="explain">현재 습도</h1>
+                <h3 class="info" id="seupdo">30</h3>
+            </div>
+            <div class="content">
+                <h1 class="explain">현재 창문</h1>
+                <h3 class="info" id="window">열림</h3>
+            </div>
         </div>
 
     </body>
