@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
@@ -106,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
         // cardview에 들어갈 item 설정
         List<Item> items = new ArrayList<>();
         Item[] item = new Item[ITEM_SIZE];
-        item[0] = new Item(R.drawable.rock_open, "보안모드", value_1);
-        item[1] = new Item(R.drawable.window, "창문 상태", value_2);
-        item[2] = new Item(R.drawable.temp, "온/습도", value_3);
-        item[3] = new Item(R.drawable.door, "문 열기", value_4);
+        item[0] = new Item(R.drawable.rock_open, "보안모드", "실행하기");
+        item[1] = new Item(R.drawable.window, "창문 상태", "닫힘");
+        item[2] = new Item(R.drawable.temp, "온/습도", "26℃/24%");
+        item[3] = new Item(R.drawable.door, "문 열기", "닫힘");
 
         for (int i = 0; i < ITEM_SIZE; i++) {
             items.add(item[i]);
@@ -137,14 +138,18 @@ public class MainActivity extends AppCompatActivity {
 
     public static void ParsingData(){ // Data 파싱
         Document doc;
+        String tempStr = "";
+        String[] tempStrSplit = null;
         try{
             doc = Jsoup.connect(URLs).get();
-            Elements ele1 = doc.select("p").eq(0);
-            Elements ele2 = doc.select("p").eq(1);
-            Elements ele3 = doc.select("p").eq(2);
-            value_1 = ele1.text();
-            value_2 = ele3.text();
-            value_3 = ele1.text()+"/"+ele2.text();
+            Elements ele = doc.select("p");
+            tempStr = ele.text();
+
+            tempStr = tempStr.substring(0, 13);
+            tempStrSplit = tempStr.split("a");
+
+            value_2 = tempStrSplit[3];
+            value_3 = tempStrSplit[1] + "/" + tempStrSplit[0];
         }
 
         catch(Exception e){

@@ -1,6 +1,7 @@
 package bro.myapplication;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
@@ -44,7 +45,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            if(item.getTitle().equals("보안모드")){
+                holder.cardview.setCardBackgroundColor(Color.RED);
+            /*if(item.getTitle().equals("보안모드")){
                 if(item.getImage() == R.drawable.rock_close) {
                     holder.image.setBackground(changeDrawable_1);
                     holder.value.setText("실행 중.....");
@@ -56,13 +58,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 }
             }
 
-            count++;
+            count++;*/
 
-            if(count % 2 == 0){
+            /*if(count % 2 == 0){
                 MainActivity.MyAsyncTask myAsyncTask = new MainActivity.MyAsyncTask();
                 myAsyncTask.execute();
                 count = 0;
-            }
+            }*/
         }
         });
     }
