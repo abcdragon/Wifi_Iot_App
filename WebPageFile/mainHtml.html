@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.1.1.js"   
+        integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   
+        crossorigin="anonymous"></script>
+        <meta charset="UTF-8">
+        <title>IoT Welcome</title>
+        <style>
+            div.content {
+                border:3px solid lightslategray;
+                text-align:center;
+                background-color: lawngreen;
+                display:inline-block;
+                margin:20px
+            }
+            h1.explain{
+                color: yellow;
+                background-color:black; 
+            }
+            h3.info{
+                text-decoration:overline;
+            }
+        </style>
+        <script type="text/javascript" language="javascript">
+            $(document).ready(function(){
+                $('#container').hide();
+            });
+            function GetData(){
+                $('#container').load('http://192.168.0.177 p');
+                var sensorData = $('#container').text();
+                var sensorDataSubString = sensorData.substring(0, 13);
+                var sensorDataSplit = sensorDataSubString.split('a');
+                $('#seupdo').text(sensorDataSplit[0]);
+                $('#ondo').text(sensorDataSplit[1]);
+                $('#window').text(sensorDataSplit[2]);
+                $('#moving').text(sensorDataSplit[3]);
+                setTimeout('GetData()', 1000);
+            } 
+       </script>
+    </head>
+    <body onload="GetData()">
+        <div style="margin:0 auto">
+            <div class="content">
+                <h1 class="explain">현재 온도</h1>
+                <h3 class="info" id="ondo">20</h3>
+            </div>
+            <div class="content">
+                <h1 class="explain">현재 습도</h1>
+                <h3 class="info" id="seupdo">30</h3>
+            </div>
+            <div class="content">
+                <h1 class="explain">현재 창문</h1>
+                <h3 class="info" id="window">열림</h3>
+            </div>
+            <input type="hidden" id="moving" value = "0" />
+        </div>
+
+        <div id="container"></div>
+    </body>
+</html>
